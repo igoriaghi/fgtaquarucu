@@ -9,6 +9,7 @@ const rootRouterConfig : Routes = [
     { path: 'participante', loadChildren: () => import('../modules/sistema/participante/participante.module').then(mod => mod.ParticipanteModule)},
     { path: 'jurado', loadChildren: () => import('../modules/sistema/jurado/jurado.module').then(mod => mod.JuradoModule)},
     { path: 'login', component: AutenticacaoComponent },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     // { path: '', redirectTo: 'cadastro', pathMatch: 'full' },
     // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},    
     // { path: 'admin', loadChildren: () => import('../modules/admin/admin.module').then(mod => mod.AdminModule), canLoad:[AdminAuthGuard], canActivate:[AdminAuthGuard]},
