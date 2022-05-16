@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-autenticacao',
@@ -9,13 +10,19 @@ import { Router } from '@angular/router';
 export class AutenticacaoComponent implements OnInit {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
   }
 
-  btnClick() {
+  autenticacao(){
+    this.messageService.add({severity:'info', summary:'Em Desenvolvimento', detail:'Tela ainda não Implementada!'});
+    return;
+  }
+
+  registar() {
     this.router.navigateByUrl('/participante/registro');
   }
 
