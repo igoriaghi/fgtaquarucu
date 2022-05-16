@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { RegistroService } from './registro.service';
 
 
@@ -22,7 +23,9 @@ export class RegistroComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private registroService: RegistroService
+    private registroService: RegistroService,
+    private messageService: MessageService
+    
   ) { }
 
 
@@ -53,11 +56,14 @@ export class RegistroComponent implements OnInit {
 
   onSubmit(){
 
+    this.messageService.add({severity:'success', summary:'Cadastro', detail:'Enviado com sucesso!'});
+
     console.log(this.formulario);
 
     this.registroService.registrarParticipante();
 
-    //this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/login');
+
   }
 
 
