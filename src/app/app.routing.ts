@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AutenticacaoComponent } from 'src/modules/autenticacao/autenticacao.component';
+import { AutenticacaoParticipanteComponent } from 'src/modules/sistema/participante/autenticacao-participante/autenticacao-participante.component';
 
 
 
 const rootRouterConfig : Routes = [
 
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'login', component: AutenticacaoComponent },
+    { path: 'login-participante', component: AutenticacaoParticipanteComponent },
     { path: 'participante', loadChildren: () => import('../modules/sistema/participante/participante.module').then(mod => mod.ParticipanteModule)},
     { path: 'jurado', loadChildren: () => import('../modules/sistema/jurado/jurado.module').then(mod => mod.JuradoModule)},
-    { path: 'login', component: AutenticacaoComponent },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
+    { path: 'admin', loadChildren: () => import('../modules/sistema/admin/admin.module').then(mod => mod.AdminModule)},
     // { path: '', redirectTo: 'cadastro', pathMatch: 'full' },
     // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},    
     // { path: 'admin', loadChildren: () => import('../modules/admin/admin.module').then(mod => mod.AdminModule), canLoad:[AdminAuthGuard], canActivate:[AdminAuthGuard]},

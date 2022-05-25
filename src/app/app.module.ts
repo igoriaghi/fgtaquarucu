@@ -11,6 +11,7 @@ import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import {RippleModule} from 'primeng/ripple';
 import { MessageService } from 'primeng/api';
+import { NavegacaoModule } from 'src/modules/navegacao/navegacao.module';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,11 @@ import { MessageService } from 'primeng/api';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    NavegacaoModule,
     BrowserAnimationsModule,
     ToastModule,
     ButtonModule,
-    RippleModule,
-
-    
+    RippleModule,    
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],

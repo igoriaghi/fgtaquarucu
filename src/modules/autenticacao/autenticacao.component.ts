@@ -18,12 +18,13 @@ export class AutenticacaoComponent implements OnInit {
   }
 
   autenticacao(){
-    this.messageService.add({severity:'info', summary:'Em Desenvolvimento', detail:'Tela ainda não Implementada!'});
+    //this.messageService.add({severity:'info', summary:'Em Desenvolvimento', detail:'Tela ainda não Implementada!'});
+    this.router.navigateByUrl('/admin/dashboard');
     return;
   }
 
   registar() {
-    this.router.navigateByUrl('/participante/registro');
+    this.router.navigateByUrl('/admin/dashboard');
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
 
 
@@ -11,7 +12,10 @@ export class MenuComponent implements OnInit {
 
   items: MenuItem[];
 
-  constructor() {
+  constructor(
+    private router: Router,
+
+  ) {
 
    }
 
@@ -22,45 +26,59 @@ export class MenuComponent implements OnInit {
               icon:'pi pi-fw pi-file',
               items:[
                   {
-                      label:'Usuário'
+                      label:'Usuários'
                   },
                   {
-                      label:'Participante'
-                  }
+                      label:'Tecnicos'
+                  },
+                  {
+                      label:'Categorias'
+                  },
+                  {
+                      label:'Participantes'
+                  },
+                  {
+                      label:'Dia do Evento'
+                  },
               ]
-          },
-          
+          },          
           {
               label:'Eventos',
               icon:'pi pi-fw pi-calendar',
               items:[
                   {
-                      label:'Edit',
+                      label:'Potuação',
                       icon:'pi pi-fw pi-pencil',
                       items:[
-                      {
-                          label:'Save',
-                          icon:'pi pi-fw pi-calendar-plus'
-                      },
-                      {
-                          label:'Delete',
-                          icon:'pi pi-fw pi-calendar-minus'
-                      },
-
-                      ]
+                        {
+                            label:'Técnico',
+                            icon:'pi pi-fw pi-calendar-plus'
+                        },
+                        {
+                            label:'Convidado',
+                            icon:'pi pi-fw pi-calendar-minus'
+                        }
+                      ],
+                      
                   },
                   {
-                      label:'Archieve',
-                      icon:'pi pi-fw pi-calendar-times',
-                      items:[
-                      {
-                          label:'Remove',
-                          icon:'pi pi-fw pi-calendar-minus'
-                      }
-                      ]
+                    label:'Notícia',
+                    icon:'pi pi-fw pi-pencil',
+                  },
+                  {
+                    label:'Notificação',
+                    icon:'pi pi-fw pi-pencil',
+                  },
+                  {
+                    label:'Penalidades',
+                    icon:'pi pi-fw pi-pencil',
                   }
               ]
           }
       ];
   } 
+
+  logout() {
+    this.router.navigateByUrl('/login');
+  }
 }
