@@ -6,10 +6,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriaComponent } from './categoria/categoria.component';
 import { ParticipanteCadastroComponent } from './participante-cadastro/participante-cadastro.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     AdminRoutingModule
   ],
   declarations: [
