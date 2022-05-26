@@ -4,6 +4,8 @@ import { AdminComponent } from './admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriaComponent } from './categoria/categoria.component';
+import { ParticipanteCadastroComponent } from './participante-cadastro/participante-cadastro.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import { CategoriaComponent } from './categoria/categoria.component';
   declarations: [
     AdminComponent,
     CategoriaComponent,
-    DashboardComponent
+    DashboardComponent,
+    ParticipanteCadastroComponent,
+    UsuarioComponent
   ],
 
   schemas: [

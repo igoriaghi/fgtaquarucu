@@ -22,20 +22,29 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
       this.items = [
           {
+            label:'Home',
+            icon:'pi pi-fw pi-home',
+            command: () => { this.router.navigateByUrl('/admin/dashboard') }
+          },
+          {
               label:'Cadastro',
               icon:'pi pi-fw pi-file',
               items:[
                   {
-                      label:'Usuários'
+                      label:'Usuários',
+                      command: () => { this.router.navigateByUrl('/admin/usuario') }
                   },
                   {
                       label:'Tecnicos'
                   },
                   {
-                      label:'Categorias'
+                      label:'Categorias',
+                      // url: '/admin/categoria',     
+                      command: () => { this.router.navigateByUrl('/admin/categoria') }
                   },
                   {
-                      label:'Participantes'
+                      label:'Participantes',
+                      command: () => { this.router.navigateByUrl('/admin/participante') }
                   },
                   {
                       label:'Dia do Evento'
