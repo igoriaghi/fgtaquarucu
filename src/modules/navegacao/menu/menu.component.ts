@@ -44,7 +44,7 @@ export class MenuComponent implements OnInit {
                   },
                   {
                       label:'Participantes',
-                      command: () => { this.router.navigateByUrl('/admin/participante') }
+                      command: () => { this.router.navigate([`/participante/registro`]); }
                   },
                   {
                       label:'Dia do Evento'
