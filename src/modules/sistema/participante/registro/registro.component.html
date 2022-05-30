@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" class="container" [formGroup]="formulario">
+<form  class="container" [formGroup]="formulario">
     <main>
         <div class="py-3 text-center">
           <!-- <img class="d-block mx-auto mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
@@ -15,126 +15,154 @@
               <div class="row g-2">
 
                   <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3">              
-                      <label for="cpf" class="form-label">CPF / CNPJ</label>
-                      <input type="text" class="form-control" id="cpf" placeholder="" autocomplete="off" formControlName="cpf_cnpj">
-                      <div class="invalid-feedback">
-                        Valid first name is required.
+                      <label for="cpfCnpj" class="form-label">CPF / CNPJ</label>
+                      <input type="text" mask="{{mask}}" class="form-control" id="cpfCnpj" placeholder="Cpf ou Cnpj" autocomplete="off"
+                         formControlName="cpfCnpj" (keyup)="verificarTipoPessoa()" [ngClass]="{'is-invalid': displayMessage?.cpfCnpj}">
+                      <div class="invalid-feedback" *ngIf="displayMessage?.cpfCnpj">
+                        <p [innerHTML]="displayMessage?.cpfCnpj"></p>
                       </div>
                   </div>
 
                   <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">              
                       <label for="nome" class="form-label">Nome</label>
-                      <input type="text" class="form-control" id="nome" placeholder="" autocomplete="off" formControlName="nome">
-                      <div class="invalid-feedback">
-                        Valid first name is required.
+                      <input type="text" class="form-control" id="nome" placeholder="Nome" autocomplete="off" formControlName="nome" [ngClass]="{'is-invalid': displayMessage?.nome}">
+                      <div class="invalid-feedback" *ngIf="displayMessage?.nome">
+                        <p [innerHTML]="displayMessage?.nome"></p>
                       </div>
                   </div>
 
                   <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                      <label for="lastName" class="form-label">Fantasia</label>
-                      <input type="text" class="form-control" id="lastName" placeholder="" autocomplete="off" formControlName="fantasia" >
-                      <div class="invalid-feedback">
-                        Valid last name is required.
-                      </div>
+                      <label for="fantasia" class="form-label">Fantasia</label>
+                      <input type="text" class="form-control" id="fantasia" placeholder="Fantasia" autocomplete="off" formControlName="fantasia" >
                   </div>
 
-                  <div class="col-sm-6">
-                      <label for="lastName" class="form-label invisible">Texo oculto</label>
-                      <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="same-address" formControlName="ja_participou_da_fgt">
-                          <label class="form-check-label" for="same-address">Já participou do Festival Gastronômico de Taquaruçu?</label>
-                      </div>
-                  </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 d-flex justify-content-between align-items-center">
+                  <h5 class="form-check-label mt-1" >Já participou do Festival Gastronômico de Taquaruçu?</h5>
+                  <p-toggleButton onLabel="Sim" offLabel="Não" onIcon="{{icon}}" offIcon="pi pi-times" formControlName="jaParticipouFgt" [style]="{'width': '8em'}"></p-toggleButton>
+
+                </div>
 
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                  <label for="username" class="form-label">Email</label>
-                  <div class="input-group has-validation">
-                    <span class="input-group-text">@</span>
-                    <input type="email" class="form-control" id="username" placeholder="exemplo@email.com" formControlName="email">
-                  </div>
-                    <!-- <span class="invalid-feedback" *ngIf="displayMessage?.operacao_id">
-                      <p [innerHTML]="displayMessage?.operacao_id"></p>
-                    </span> -->
-
+                    <label for="email" class="form-label">Email</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text">@</span>
+                      <input type="email" class="form-control" id="username" placeholder="exemplo@email.com" formControlName="email" [ngClass]="{'is-invalid': displayMessage?.email}">
+                      <div class="invalid-feedback" *ngIf="displayMessage?.email">
+                        <p [innerHTML]="displayMessage?.email"></p>
+                      </div>
+                    </div>
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                  <label for="cep" class="form-label">Senha</label>
+                  <label for="senha" class="form-label">Senha</label>
                   <input type="password" class="form-control" id="senha" placeholder="" formControlName="senha"
-                  [ngClass]="'is-invalid'">
-                  <span class="invalid-feedback">A senha é obrigatória.</span>
-
+                    [ngClass]="{'is-invalid': displayMessage?.senha}">
+                  <div class="invalid-feedback" *ngIf="displayMessage?.senha">
+                    <p [innerHTML]="displayMessage?.senha"></p>
+                  </div>
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                  <label for="cep" class="form-label">Confirmação da Senha</label>
-                  <input type="password" class="form-control" id="confimacao" placeholder="" formControlName="confirmacao_senha">
+                  <label for="confirmacaoSenha" class="form-label">Confirmação da Senha</label>
+                  <input type="password" class="form-control" id="confirmacaoSenha" placeholder="" formControlName="confirmacaoSenha"
+                    [ngClass]="{'is-invalid': displayMessage?.confirmacaoSenha}">
+                  <div class="invalid-feedback" *ngIf="displayMessage?.confirmacaoSenha">
+                    <p [innerHTML]="displayMessage?.confirmacaoSenha"></p>
+                  </div>
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                   <label for="cep" class="form-label">Cep</label>
-                  <input type="text" class="form-control" id="cep" placeholder="" autocomplete="off" formControlName="cep">
+                  <input type="text" class="form-control" id="cep" placeholder="CEP" autocomplete="off" formControlName="cep" 
+                      mask="00.000-000" (blur)="obterCep()" [ngClass]="{'is-invalid': displayMessage?.cep}">
+                  <div class="invalid-feedback" *ngIf="displayMessage?.cep">
+                    <p [innerHTML]="displayMessage?.cep"></p>
+                  </div>
                 </div>
 
-                <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
-                  <label for="address" class="form-label">Endereço</label>
-                  <input type="text" class="form-control" id="address" placeholder="Endereço" autocomplete="off" formControlName="endereco">
-                </div>
-
-                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
-                  <label for="Bairro" class="form-label">Bairro</label>
-                  <input type="text" class="form-control" id="Bairro" placeholder="Bairro" autocomplete="off" formControlName="bairro">
-                </div>
-
-
+                
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-                  <label for="cidade" class="form-label">Cidade</label>
-                  <select class="form-select" id="cidade" formControlName="cidade">
-                    <option [ngValue]="0">Selecione...</option>
-                    <option [ngValue]="1">Palmas</option>
-                    <option [ngValue]="2">Paraíso</option>
-                    <option [ngValue]="3">Miracema</option>
-                    <option [ngValue]="4">Porto Nacional</option>
-                  </select>
+                  <label for="bairro" class="form-label">Cidade</label>
+                  <input formControlName="cidade"
+                        [typeahead]="cidades"
+                        typeaheadOptionField="cidade"
+                        (typeaheadOnSelect)="cidadeSelecionada($event)"
+                        class="form-control"
+                        [ngClass]="{'is-invalid': displayMessage?.ibgeCidade}">
+                    <!-- <div >Carregando...</div> -->
+                    <div class="invalid-feedback" *ngIf="displayMessage?.ibgeCidade">
+                      <p [innerHTML]="displayMessage?.ibgeCidade"></p>
+                    </div>
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                   <label for="estado" class="form-label">Estado</label>
-                  <select class="form-select" id="estado" formControlName="estado">
-                    <option [ngValue]="0">Selecione...</option>
-                    <option [ngValue]="1">Tocantins</option>
-                    <option [ngValue]="2">Maranhão</option>
-                    <option [ngValue]="3">Bahia</option>
-                    <option [ngValue]="4">Goiás</option>
-
+                  <select class="form-select" id="estado" formControlName="ibgeUf" [ngClass]="{'is-invalid': displayMessage?.ibgeUf}">
+                    <option [ngValue]="item.codigo" *ngFor="let item of listaEstados">{{item.nome}}</option>
                   </select>
+                  <div class="invalid-feedback" *ngIf="displayMessage?.ibgeUf">
+                    <p [innerHTML]="displayMessage?.ibgeUf"></p>
+                  </div>
                 </div>
 
-                <div class="col-md-12">
-                    <div class="col-md-4">
-                      <label for="state" class="form-label">Categoria</label>
-                      <select class="form-select" id="state" formControlName="categoria">
-                          <option [ngValue]="0">Selecione...</option>
-                          <option [ngValue]="1">Comidinha Salgada</option>
-                          <option [ngValue]="2">Prato Salgado</option>
-                          <option [ngValue]="3">Prato Doce</option>
-                          <option [ngValue]="4">Trailer/FoodTruck</option>
-                          <option [ngValue]="5">Vegetariana</option>
-                          <option [ngValue]="6">Categoria Rota Gastronômica</option>
-                      </select>
-                    </div>
-                    <small class="text-muted">Conforme a Categoria selecionada, será visualizado os detalhes de cada categoria.</small>
+                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+                  <label for="endereco" class="form-label">Endereço</label>
+                  <input type="text" class="form-control" id="endereco" placeholder="Endereço" autocomplete="off" formControlName="endereco"
+                      [ngClass]="{'is-invalid': displayMessage?.endereco}">
+                  <div class="invalid-feedback" *ngIf="displayMessage?.endereco">
+                    <p [innerHTML]="displayMessage?.endereco"></p>
+                  </div>
                 </div>
+
+                <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                  <label for="numero" class="form-label">Número</label>
+                  <input type="text" class="form-control" id="numero" placeholder="Número" autocomplete="off" formControlName="numero"
+                      [ngClass]="{'is-invalid': displayMessage?.numero}">
+                  <div class="invalid-feedback" *ngIf="displayMessage?.numero">
+                    <p [innerHTML]="displayMessage?.numero"></p>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+                  <label for="bairro" class="form-label">Bairro</label>
+                  <input type="text" class="form-control" id="bairro" placeholder="Bairro" autocomplete="off" formControlName="bairro"
+                      [ngClass]="{'is-invalid': displayMessage?.bairro}">
+                  <div class="invalid-feedback" *ngIf="displayMessage?.bairro">
+                    <p [innerHTML]="displayMessage?.bairro"></p>
+                  </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3">
+
+                      <label for="categoriaId" class="form-label">Categoria</label>
+                      <select class="form-select" id="categoriaId" formControlName="categoriaId" (change)="obterDetalhesCategoria()" [ngClass]="{'is-invalid': displayMessage?.categoriaId}">
+                          <option [ngValue]="0">Selecione...</option>
+                          <option [ngValue]="item.id" *ngFor="let item of listaCategoria">{{item.descricao}}</option>
+                      </select>
+                      <div class="invalid-feedback" *ngIf="displayMessage?.categoriaId">
+                        <p [innerHTML]="displayMessage?.categoriaId"></p>
+                      </div>
+                    <small >{{detalhesCategoria}}</small>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="text" class="form-control" id="telefone" placeholder="Telefone" autocomplete="off" formControlName="telefone" 
+                        mask="(00)00000-0000" [ngClass]="{'is-invalid': displayMessage?.telefone}">
+                    <div class="invalid-feedback" *ngIf="displayMessage?.telefone">
+                      <p [innerHTML]="displayMessage?.telefone"></p>
+                    </div>
+                </div>
+
                 
 
               </div>
-            
 
               <hr class="my-4">
 
               <div class="row d-flex justify-content-center">
-                  <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                      <button class="w-100 btn btn-primary btn-lg" >Enviar</button>
+                  <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 mb-3">
+                      <button type="button" class="w-100 btn btn-success btn-lg" (click)="onSubmit()">Enviar</button>
                   </div>
               </div>
 

@@ -1,64 +1,68 @@
-<div class="card">
+<form>
+  <div class="card">
 
-  <h5 class="card-header d-flex justify-content-between align-items-center">
-    Categorias
-    <button class="btn btn-block btn-success d-flex pr-1"><i class="material-icons">add</i> Novo</button>
-  </h5>  
-
-  <div class="card-body">
-
-      <div class="row">
-
-        <div class="col-12 col-sm-12 col-md-2 col-lg-1 col-xl-1">
-          <label for="codigo" class="form-label">Código</label>
-          <input type="number" class="form-control" id="codigo" placeholder="">
-        </div>
-    
-        <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 ">
-          <label for="descricao" class="form-label">Descrição</label>
-          <input type="text" class="form-control" id="descricao" placeholder="">
-        </div>
-
-        <!-- <div class=" col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 form-group align-self-end">
-          <button class="btn btn-primary" id="pesquisar" name="pesquisar" type="button">Pesquisar</button>
-        </div> -->
-
-        <div class="col-sm-6 col-md-6 col-lg-1 col-xl-1">
-          <div class="form-group">
-              <label class="col-form-label-sm text-nowrap text-hide"></label>
-              <button class="btn btn-block btn-primary d-flex pr-1"><i class="material-icons">search</i> Pesquisar</button>
+    <h5 class="card-header d-flex justify-content-between align-items-center">
+      Categorias
+      <button [routerLink]="['novo']" class="btn btn-block btn-success d-flex pr-1"><i class="material-icons">add</i> Novo</button>
+    </h5>  
+  
+    <div class="card-body">
+  
+        <div class="row">
+  
+          <div class="col-12 col-sm-12 col-md-2 col-lg-1 col-xl-1">
+            <label for="codigo" class="form-label">Código</label>
+            <input type="number" class="form-control" id="codigo" placeholder="">
           </div>
-        </div>
-
-
-      </div>
-    
-      <div class="col-12 mt-3 ">
-          <div class="table-responsive" style="min-height: 30rem !important;" >
-              <table class="table table-sm table-borderless table-striped table-hover " >
-                  <thead class="thead">
-                      <th class="text-nowrap">Código</th>
-                      <th class="text-nowrap">Descrição</th>
-                  </thead>
-                  <tbody>
-                      <tr>
-                          <td>2</td>
-                          <td>Comidinha</td>
-                      </tr>
-                      <tr>
-                          <td>3</td>
-                          <td>Food Truck</td>
-                      </tr>
-                      <tr>
-                          <td>4</td>
-                          <td>OUTROS</td>
-                      </tr>
-                  </tbody>
-              </table>
+      
+          <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 ">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="descricao" placeholder="">
           </div>
-      </div>
-
-    
-
+  
+          <!-- <div class=" col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 form-group align-self-end">
+            <button class="btn btn-primary" id="pesquisar" name="pesquisar" type="button">Pesquisar</button>
+          </div> -->
+  
+          <div class="col-sm-6 col-md-6 col-lg-1 col-xl-1">
+            <div class="form-group">
+                <label class="col-form-label-sm text-nowrap text-hide"></label>
+                <button class="btn btn-block btn-primary d-flex pr-1"><i class="material-icons">search</i> Pesquisar</button>
+            </div>
+          </div>
+  
+  
+        </div>
+      
+        <div class="col-12 mt-3 ">
+            <div class="table-responsive" style="min-height: 30rem !important;" >
+                <table class="table table-sm table-borderless table-striped table-hover " >
+                    <thead class="thead">
+                        <th class="text-nowrap">Código</th>
+                        <th class="text-nowrap">Descrição</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of listaCategoria" [routerLink]="['editar/', item.id]" class="cursor">
+                            <td>{{item.id}}</td>
+                            <td>{{item.descricao}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+  
+      
+  
+    </div>
   </div>
-</div>
+</form>
+
+<!-- <p-dialog header="Header" [(visible)]="modalCadastro" [style]="{width: '90vw'}">
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <ng-template pTemplate="footer">
+      <p-button icon="pi pi-check" (click)="modalCadastro=false" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog> -->

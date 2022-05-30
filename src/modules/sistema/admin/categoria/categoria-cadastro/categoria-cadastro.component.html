@@ -1,0 +1,53 @@
+<form [formGroup]="formulario">
+  <div class="card">
+
+    <h5 class="card-header d-flex justify-content-between align-items-center">
+      Categoria - Cadastro
+      <div class="btn-group ">
+        <a class="btn btn-block btn-secondary d-flex pr-1 " href="javascript:window.history.back();"><i
+          class="material-icons">arrow_back</i>Voltar</a>
+        <button class="btn btn-block btn-success d-flex pr-1" (click)="onSubmit()"><i class="material-icons">done_all</i> Salvar</button>
+
+      </div>
+    </h5>  
+  
+    <div class="card-body">
+  
+        <div class="row">
+  
+          <div class="col-12 col-sm-12 col-md-2 col-lg-1 col-xl-1">
+            <label for="id" class="form-label">Código</label>
+            <input type="number" class="form-control" id="id" placeholder="" formControlName="id" readonly>
+          </div>
+      
+          <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 ">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="descricao" placeholder="" formControlName="descricao">
+          </div>
+
+          <div class=" col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 form-group align-self-end">
+            <p-toggleButton formControlName="ativo" onLabel="Ativo" offLabel="Inativo" 
+             onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width': '10em'}" 
+             offIcon="pi pi-times" [style]="{'width': '10em'}"></p-toggleButton>
+          </div>
+
+          <!-- <div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-3 ">
+            <label for="dt_cadastro" class="form-label">Data Cadastro</label>
+            <input type="text" class="form-control" id="dt_cadastro" placeholder="" formControlName="dt_cadastro">
+          </div> -->
+
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+
+              <label for="detalhes" class="form-label">Detalhes</label>
+              <textarea class="form-control" id="detalhes" rows="2" formControlName="detalhes"></textarea>
+
+          </div>
+  
+        </div>
+
+  
+      
+  
+    </div>
+  </div>
+</form>
